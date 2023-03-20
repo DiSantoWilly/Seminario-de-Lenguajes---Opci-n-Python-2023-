@@ -5,6 +5,8 @@ from datetime import datetime
 # operators = ["+", "-", "/", "*"]
 operators = ["/"]
 
+
+
 # Cantidad de cuentas a resolver
 times = 5
 
@@ -25,12 +27,6 @@ for i in range(0, times):
     operator = choice(operators)
 
 
-# Se imprime la cuenta.
-    print(f"{i+1}- ¿Cuánto es {number_1} {operator} {number_2}?")
-
-# Le pedimos al usuario el resultado
-    result = (input("resultado: "))
-
 # Obtenemos el resultado de la operación asignada
     match operator:
         case "+":
@@ -38,14 +34,25 @@ for i in range(0, times):
         case "-":
             x = number_1 - number_2
         case "/":
-            x = number_1 / number_2
+            while float(number_2) == 0.0:
+                number_2 = randrange(10)
+            
+            x = float(number_1 / number_2)
+            x = ("{:.2f}".format(x)) # Se redondea la respuesta, restringiendo el uso máximo de 2 decimales.
         case "*":
             x = number_1 * number_2
+
+
+# Se imprime la cuenta.
+    print(f"{i+1}- ¿Cuánto es {number_1} {operator} {number_2}?")
+
+# Le pedimos al usuario el resultado
+    result = float(input("resultado: "))
         
 # Comparamos el resultado de la operación con el valor ingresado por el usuario.
 # Se imprime la respuesta en pantalla.
 
-    if int(result) == int(x):
+    if result == float(x):
         print ("BIEN!!!")
         good = good + 1
     else:
