@@ -2,8 +2,8 @@ from random import choice, randrange
 from datetime import datetime
 
 # Operadores posibles
-# operators = ["+", "-", "/", "*"]
-operators = ["/"]
+operators = ["+", "-", "/", "*"]
+
 
 
 
