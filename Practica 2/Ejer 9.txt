@@ -1,0 +1,16 @@
+Scrabble = {"AEIOULNRST":1, "DG":2, "BCMP":3, "FHVWY":4, "K":5, "JX":8, "QZ":10}
+
+x = input("Ingrese palabra: ").upper()
+
+
+puntos = 0
+
+
+
+for elem in x:
+    for i in Scrabble.keys():
+        if elem in i:
+            puntos += Scrabble[i]
+        
+
+print (f"Puntos: {puntos}")
