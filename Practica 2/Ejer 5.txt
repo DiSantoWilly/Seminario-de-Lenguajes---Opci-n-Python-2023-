@@ -1,8 +1,0 @@
-import string
-from collections import Counter
-
-frase = input("Ingrese la frase deseada: ")
-palabra = input("ingrese palabra a buscar: ")
-
-
-print (Counter(frase.lower().split()).get(palabra.lower(), 0))
