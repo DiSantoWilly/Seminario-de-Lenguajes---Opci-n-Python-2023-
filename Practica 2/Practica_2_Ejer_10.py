@@ -15,27 +15,105 @@ notas_2 = [30, 95, 28, 84, 84, 43, 66, 51, 4, 11, 58, 10, 13, 34, 96, 71, 86, 37
 
 #====================================
 #---------------Inciso A
+def inciso_a(notas):
 
-print ("\n \n")
-print ("="*50)
+    print ("\n \n")
+    print ("="*50)
 
-notas_generales = notas_1.copy() + notas_2.copy()
+    notas= set(notas)
 
-
-print (f"Cantidad de notas generales: {len(set(notas_generales))} \n \n Notas generales: {set(notas_generales)}")
+    print (f"Cantidad de notas generales: {len(notas)} \n \n Notas generales: {notas}")
 
 
 
 #====================================
 #---------------Inciso B
+def inciso_b(nombre):
 
-print ("\n \n")
-print ("="*50)
+    print ("\n \n")
+    print ("="*50)
 
-baja = 9999 #/////////////////////////////////ESTA VARIABLE CORRESPONDE AL INCISO E
-nom_baja = "" #/////////////////////////////////ESTA VARIABLE CORRESPONDE AL INCISO E
+    promedios = {}
 
-promedios = {}
+    for i in range(len(nombre)):
+
+        promedios[nombre[i]] = (notas_1[i] + notas_2[i]) / 2
+
+        print(f"El promedio de notas de {nombre[i]} es {promedios[nombre[i]]}")
+
+    return promedios
+
+    
+
+
+#====================================
+#---------------Inciso C
+
+def inciso_c(notas_generales):
+
+    print ("\n \n")
+    print ("="*50)
+
+    p_notas_totales = 0
+
+    for notas in notas_generales:
+        p_notas_totales += notas
+
+
+    print (f"El promedio general del curso es {p_notas_totales / len(notas_generales)}")
+
+
+
+
+
+#====================================
+#---------------Inciso D
+def inciso_d(promedios):
+
+    print ("\n \n")
+    print ("="*50)
+
+    alta = -1
+    nom_alta = ""
+
+    for elem in promedios:
+        if promedios[elem] > alta:
+            alta = promedios[elem]
+            nom_alta = elem
+
+
+    print (f"El estudiante con nota promedio más alta es: {nom_alta}")
+
+
+
+
+#====================================
+#---------------Inciso E
+def inciso_e(nombre):
+
+    print ("\n \n")
+    print ("="*50)
+
+    baja = 9999 
+    nom_baja = "" 
+
+    for elem in range(len(nombre)):
+        if notas_1[elem] < baja or notas_2[elem] < baja:
+                if notas_1[elem] < notas_2[elem]:
+                    baja = notas_1[elem]
+                else:
+                    baja = notas_2[elem]
+                nom_baja = nombre[elem]
+
+    print (f"El estudiante con la nota más baja es: {nom_baja}")
+
+
+
+#===================================================================
+#******************************     Programa principal
+
+
+notas_generales = notas_1.copy() + notas_2.copy()
 
 nom = nombres.split(",")
 
@@ -44,65 +122,10 @@ for i in range(len(nom)):
     nom[i] = nom[i].replace("'", '')
     nom[i] = nom[i].replace("\n", '')
 
-    promedios[nom[i]] = (notas_1[i] + notas_2[i]) / 2
-
-    print(f"El promedio de notas de {nom[i]} es {promedios[nom[i]]}")
-
-#/////////////////////////////////ESTA PARTE CORRESPONDE AL INCISO E
-
-    if notas_1[i] < baja or notas_2[i] < baja:
-        if notas_1[i] < notas_2[i]:
-            baja = notas_1[i]
-        else:
-            baja = notas_2[i]
-        nom_baja = nom[i]
-    
 
 
 
-
-#====================================
-#---------------Inciso C
-
-print ("\n \n")
-print ("="*50)
-
-p_notas_totales = 0
-
-for notas in notas_generales:
-    p_notas_totales += notas
-
-
-print (f"El promedio general del curso es {p_notas_totales / len(notas_generales)}")
-
-
-
-
-
-#====================================
-#---------------Inciso D
-
-print ("\n \n")
-print ("="*50)
-
-alta = -1
-nom_alta = ""
-
-for elem in promedios:
-    if promedios[elem] > alta:
-        alta = promedios[elem]
-        nom_alta = elem
-
-
-print (f"El estudiante con nota promedio más alta es: {nom_alta}")
-
-
-
-
-#====================================
-#---------------Inciso E
-
-print ("\n \n")
-print ("="*50)
-
-print (f"El estudiante con la nota más baja es: {nom_baja}")
+inciso_a(notas_generales.copy())
+inciso_c(notas_generales)
+inciso_d(inciso_b(nom))
+inciso_e(nom)
