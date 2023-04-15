@@ -127,5 +127,5 @@ nom = list(map(lambda x: x.replace(' ', '').replace("'", '').replace('\n', ''), 
 inciso_a(notas_generales.copy())
 x = inciso_b(nom)
 inciso_c(notas_generales)
-inciso_d(inciso_b(nom))
-inciso_e(inciso_b(nom))
+inciso_d(x)
+inciso_e(x)
