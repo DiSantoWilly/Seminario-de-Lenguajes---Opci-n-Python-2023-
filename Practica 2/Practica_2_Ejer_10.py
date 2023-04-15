@@ -14,7 +14,7 @@ notas_2 = [30, 95, 28, 84, 84, 43, 66, 51, 4, 11, 58, 10, 13, 34, 96, 71, 86, 37
 
 
 #====================================
-#---------------Inciso A
+#---------------Inciso A: Crear una lista a partir de las notas NO REPETIDAS de todos los estudiantes
 def inciso_a(notas):
 
     print ("\n \n")
@@ -27,7 +27,7 @@ def inciso_a(notas):
 
 
 #====================================
-#---------------Inciso B
+#---------------Inciso B: Informar el promedio de notas de cada estudiante
 def inciso_b(nombre):
 
     print ("\n \n")
@@ -47,7 +47,7 @@ def inciso_b(nombre):
 
 
 #====================================
-#---------------Inciso C
+#---------------Inciso C: Informar el promedio general de los estudiantes
 
 def inciso_c(notas_generales):
 
@@ -67,16 +67,17 @@ def inciso_c(notas_generales):
 
 
 #====================================
-#---------------Inciso D
+#---------------Inciso D: Buscar la nota promedio más alta e informar a que estudiante le corresponde
 def inciso_d(promedios):
 
     print ("\n \n")
     print ("="*50)
-
+        
     alta = -1
     nom_alta = ""
 
     for elem in promedios:
+
         if promedios[elem] > alta:
             alta = promedios[elem]
             nom_alta = elem
@@ -84,28 +85,29 @@ def inciso_d(promedios):
 
     print (f"El estudiante con nota promedio más alta es: {nom_alta}")
 
+   
 
 
 
 #====================================
-#---------------Inciso E
-def inciso_e(nombre):
+#---------------Inciso E: Buscar la nota promedio más baja e informar a que estudiante le corresponde
+def inciso_e(promedios):
 
     print ("\n \n")
     print ("="*50)
 
     baja = 9999 
     nom_baja = "" 
+        
+    for elem in promedios:
 
-    for elem in range(len(nombre)):
-        if notas_1[elem] < baja or notas_2[elem] < baja:
-                if notas_1[elem] < notas_2[elem]:
-                    baja = notas_1[elem]
-                else:
-                    baja = notas_2[elem]
-                nom_baja = nombre[elem]
-
+        if promedios[elem] < baja:
+            baja = promedios[elem]
+            nom_baja = elem
+        
     print (f"El estudiante con la nota más baja es: {nom_baja}")
+
+    
 
 
 
@@ -115,17 +117,15 @@ def inciso_e(nombre):
 
 notas_generales = notas_1.copy() + notas_2.copy()
 
+            #// Aplico filtros para guardar en "nom" únicamente elementos que contengan el nombre de cada alumno, sin contar comillas ni comas u espacios.
 nom = nombres.split(",")
-
-for i in range(len(nom)):
-    nom[i] = nom[i].replace(' ', '')
-    nom[i] = nom[i].replace("'", '')
-    nom[i] = nom[i].replace("\n", '')
+nom = list(map(lambda x: x.replace(' ', '').replace("'", '').replace('\n', ''), nom))
 
 
 
 
 inciso_a(notas_generales.copy())
+x = inciso_b(nom)
 inciso_c(notas_generales)
 inciso_d(inciso_b(nom))
-inciso_e(nom)
+inciso_e(inciso_b(nom))
